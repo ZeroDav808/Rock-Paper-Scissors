@@ -14,10 +14,12 @@ function getComputerChoice() {
   return list[getRandomFromInterval(0, list.length - 1)];
 }
 
+// Retuns a string inputed by the user
 function getHumanChoice() {
   return prompt("Enter one of the following: rock, paper, scissors.");
 }
 
+// Stores the game logic and determines a winner and updates score
 function playRound(humanChoice, computerChoice) {
   switch (humanChoice) {
     case "rock":
@@ -43,9 +45,9 @@ function playRound(humanChoice, computerChoice) {
       }
       break;
     case "scissors":
-      if(computerChoice === "scissors"){
+      if (computerChoice === "scissors") {
         console.log("You both chose scissors! You tied.");
-      } else if(computerChoice === "rock"){
+      } else if (computerChoice === "rock") {
         computerScore += 1;
         console.log("Computer chose rock. Rock beats scissors.");
       } else {
@@ -56,7 +58,24 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
+// Runs a game loop and outputs the winner after 5 rounds
+function playGame() {
+  let i = 0;
+  while (i < 5) {
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+    i++;
+  }
 
-playRound(humanChoice, computerChoice);
+  console.log(`Human score:${humanScore} | Compuer score:${computerScore}`);
+
+  if(humanScore > computerScore){
+    console.log("You had a higher score! You win.");
+  } else {
+    console.log("Computer wins! Better luck next time!");
+  }
+}
+
+// Starts the game
+playGame();
