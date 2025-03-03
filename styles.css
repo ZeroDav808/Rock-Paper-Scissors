@@ -1,0 +1,14 @@
+button {
+    border: 2px solid lightblue;
+    background-color: white;
+    color: darkseagreen;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#results {
+    border: 3px solid lightblue;
+    text-align: center;
+    padding: 5px;
+}

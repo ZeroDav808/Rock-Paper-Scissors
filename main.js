@@ -1,8 +1,10 @@
-console.log("Hello, World!");
-
 const list = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
+
+const items = document.querySelectorAll("button");
+const human = document.querySelector(".human-score");
+const computer = document.querySelector(".computer-score");
 
 // Returns a random number in an interval
 function getRandomFromInterval(min, max) {
@@ -12,11 +14,6 @@ function getRandomFromInterval(min, max) {
 // Returns a random string of either 'rock', 'paper', 'scissors'
 function getComputerChoice() {
   return list[getRandomFromInterval(0, list.length - 1)];
-}
-
-// Retuns a string inputed by the user
-function getHumanChoice() {
-  return prompt("Enter one of the following: rock, paper, scissors.");
 }
 
 // Stores the game logic and determines a winner and updates score
@@ -58,24 +55,17 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-// Runs a game loop and outputs the winner after 5 rounds
-function playGame() {
-  let i = 0;
-  while (i < 5) {
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-    playRound(humanChoice, computerChoice);
-    i++;
-  }
+function playerSelection() {
+  items.forEach((button) => {
+    button.addEventListener("click", () => {
+      const val = button.textContent;
+      const computerChoice = getComputerChoice();
+      playRound(val, computerChoice);
 
-  console.log(`Human score:${humanScore} | Compuer score:${computerScore}`);
-
-  if(humanScore > computerScore){
-    console.log("You had a higher score! You win.");
-  } else {
-    console.log("Computer wins! Better luck next time!");
-  }
+      human.textContent = "Human score: " + humanScore;
+      computer.textContent = "Computer score: " + computerScore;
+    });
+  });
 }
 
-// Starts the game
-playGame();
+playerSelection();
