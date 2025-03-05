@@ -8,15 +8,24 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <div class="selection">
-      <button id="rock">rock</button>
-      <button id="paper">paper</button>
-      <button id="scissors">scissors</button>
-    </div>
+    <div class="box">
+      <h1>Rock Paper Scissors</h1>
+      <div class="selection-container">
+        <button id="item rock">rock</button>
+        <button id="item paper">paper</button>
+        <button id="item scissors">scissors</button>
+      </div>
+  
+      <div id="results">
+          <p class="human-score">Human score: 0</p>
+          <p class="computer-score">Computer score: 0</p>
+      </div>
 
-    <div id="results">
-        <p class="human-score"></p>
-        <p class="computer-score"></p>
+      <div class="play-again">
+        <button class="btn">Play again?</button>
+      </div>
+    
     </div>
+    
   </body>
 </html>
