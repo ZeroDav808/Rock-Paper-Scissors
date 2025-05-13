@@ -41,17 +41,30 @@ function getComputerChoice() {
   return choices[val - 1];
 }
 
-function getHumanChoice() {
-  let val = null;
-
-  while (true) {
-    val = prompt(`Choose: rock, paper, scissors`);
-    if (choices.includes(val)) {
-      return val;
+function handleClick(e) {
+    const value = e.target.id;
+    const cChoice = getComputerChoice();
+    switch(value) {
+        case 'one':
+            playRound(choices[0], cChoice);
+            break;
+        case 'two':
+            playRound(choices[1], cChoice);
+            break;
+        case 'three':
+            playRound(choices[2], cChoice);
+            break;
+        default:
+            console.log('???');
     }
-    console.log("Invalid String. Please try again!");
-  }
 }
+
+const textBox = document.querySelector('p');
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', handleClick);
+});
 
 function printScore() {
   return `The score is: User-> ${humanScore}, Computer-> ${computerScore}`;
