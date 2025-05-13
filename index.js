@@ -57,19 +57,3 @@ function printScore() {
   return `The score is: User-> ${humanScore}, Computer-> ${computerScore}`;
 }
 
-function playGame() {
-  const winningScore = 5;
-
-  while (humanScore !== winningScore && computerScore !== winningScore) {
-    let humanSelection = getHumanChoice();
-    let computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-  }
-
-  console.log('Thanks for playing');
-
-}
-
-
-playGame();
