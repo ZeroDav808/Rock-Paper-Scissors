@@ -13,6 +13,23 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice(){
+function getHumanChoice() {
     return prompt('Choose: Rock, Paper, Scissors');
 }
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(hChoice, cChoice){
+    if(hChoice === cChoice){
+        console.log(`It's a tie!`);
+    } else if((hChoice === 'Rock' && cChoice === 'Scissors') || (hChoice === 'Scissors' && cChoice === 'Paper') || (hChoice === 'Paper' && cChoice === 'Rock')){
+        console.log('Human wins!');
+        humanScore++;
+    } else{
+        console.log('Computer wins!');
+        computerScore++;
+    }
+}
+
+playRound(getHumanChoice(), getComputerChoice());
