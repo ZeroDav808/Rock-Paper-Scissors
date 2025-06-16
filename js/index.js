@@ -28,22 +28,22 @@ function getHumanChoice(e) {
 
 let humanScore = 0;
 let computerScore = 0;
+let round = 1;
 
 function playRound(hChoice, cChoice) {
-  
-  if (hChoice === cChoice) {
-    scoreBoard.textContent = `\nIt's a tie!`;
-  } else if (
+  if (
     (hChoice === "Rock" && cChoice === "Scissors") ||
     (hChoice === "Scissors" && cChoice === "Paper") ||
     (hChoice === "Paper" && cChoice === "Rock")
   ) {
-    scoreBoard.textContent = `\nHuman Wins!`;
     humanScore++;
   } else {
-    scoreBoard.textContent = `\nComputer Wins!`;
     computerScore++;
   }
+}
+
+function displayScore() {
+  scoreBoard.textContent = `Human score: ${humanScore} \nComputer score: ${computerScore} \nCurrent round: ${round}`;
 }
 
 const container = document.querySelector("#container");
@@ -52,11 +52,42 @@ scoreBoard.classList.add("scoreBoard");
 
 document.body.appendChild(scoreBoard);
 
+function resetScore() {
+  humanScore = 0;
+  computerScore = 0;
+  round = 1;
+}
+
+function playGame(e) {
+
+  if(round < 6){
+    let hChoice = getHumanChoice(e);
+    let cChoice = getComputerChoice();
+    playRound(hChoice, cChoice);
+    displayScore();
+    round++;
+  } else {
+    if(humanScore > computerScore){
+      scoreBoard.textContent = 'Human wins!!!!\nRestarting Game';
+
+    } else{
+      scoreBoard.textContent = 'Computer wins!!!!\nRestarting Game';
+    }
+    resetScore();
+  }
+}
+
 container.addEventListener("click", (e) => {
-  let hChoice = getHumanChoice(e);
-  let cChoice = getComputerChoice();
-  playRound(hChoice, cChoice);
+  playGame(e);
 });
+
+// container.addEventListener("click", (e) => {
+//   let hChoice = getHumanChoice(e);
+//   let cChoice = getComputerChoice();
+//   playRound(hChoice, cChoice);
+//   displayScore();
+//   round++;
+// });
 
 // function playGame() {
 //   for (let i = 0; i < 5; i++) {
