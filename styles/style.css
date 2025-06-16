@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+    font-size: 2rem;
+}
+
+button {
+    height: 100px;
+    width: 100px;
+    padding: 25px;
+    border-radius: 1em;
+}
+
+#container {
+    border: 1px solid gray;
+    border-radius: 1em;
+    background-color: aqua;
+    margin: 0 auto;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.scoreBoard {
+    border: 1px solid gray;
+    border-radius: 1em;
+    margin: 0 auto;
+    width: 500px;
+    height: 100px;
+    background-color: azure;
+}

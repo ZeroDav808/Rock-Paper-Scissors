@@ -16,13 +16,13 @@ function getComputerChoice() {
 function getHumanChoice(e) {
   const target = e.target;
 
-  switch(target.id){
-    case 'rock':
-      return 'Rock';
-    case 'paper':
-      return 'Paper';
-    case 'scissors':
-      return 'Scissors';
+  switch (target.id) {
+    case "rock":
+      return "Rock";
+    case "paper":
+      return "Paper";
+    case "scissors":
+      return "Scissors";
   }
 }
 
@@ -30,28 +30,33 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(hChoice, cChoice) {
+  
   if (hChoice === cChoice) {
-    console.log(`It's a tie!`);
+    scoreBoard.textContent = `\nIt's a tie!`;
   } else if (
     (hChoice === "Rock" && cChoice === "Scissors") ||
     (hChoice === "Scissors" && cChoice === "Paper") ||
     (hChoice === "Paper" && cChoice === "Rock")
   ) {
-    console.log("Human wins!");
+    scoreBoard.textContent = `\nHuman Wins!`;
     humanScore++;
   } else {
-    console.log("Computer wins!");
+    scoreBoard.textContent = `\nComputer Wins!`;
     computerScore++;
   }
 }
 
-const container = document.querySelector('#container');
+const container = document.querySelector("#container");
+const scoreBoard = document.createElement("div");
+scoreBoard.classList.add("scoreBoard");
 
-container.addEventListener('click', (e)=> { 
-  let hChoice = getHumanChoice(e); 
+document.body.appendChild(scoreBoard);
+
+container.addEventListener("click", (e) => {
+  let hChoice = getHumanChoice(e);
   let cChoice = getComputerChoice();
-  playRound(hChoice,cChoice);
-})
+  playRound(hChoice, cChoice);
+});
 
 // function playGame() {
 //   for (let i = 0; i < 5; i++) {
